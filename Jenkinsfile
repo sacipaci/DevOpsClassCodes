@@ -6,7 +6,13 @@ pipeline{
     
     agent none
     stages{
-            stage('Compile'){
+         stage('Checkout'){
+                agent any
+                steps{
+                    git 'https://github.com/sacipaci/DevOpsClassCodes.git'
+                }
+            }   
+        stage('Compile'){
                 agent any
                 steps{
                     sh 'mvn compile'
@@ -24,10 +30,10 @@ pipeline{
                 }
             }
             stage('UnitTest'){
-                agent {label 'slave_win'}
+                agent any
                 steps{
-                    git 'https://github.com/devops-trainer/DevOpsClassCodes.git'
-                    bat 'mvn test'
+                
+                   sh 'mvn test'
                 }
                 post{
                     always{
