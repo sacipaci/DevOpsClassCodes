@@ -4,7 +4,7 @@ stages {
 stage('compile') {
             steps {
 echo 'compiling..'
-                git url: 'https://github.com/lerndevops/DevOpsClassCodes'
+                git url: 'https://github.com/sacipaci/DevOpsClassCodes.git'
                 sh label: '', script: 'mvn compile'
 }
 }
