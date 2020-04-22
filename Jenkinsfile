@@ -20,18 +20,6 @@ pmd canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '**/pmd.xml
 }
             
 }
-stage('unit-test') {
-            steps {
-echo 'codereview..'
-                sh label: '', script: 'mvn test'
-}
-            post {
-success {
-junit 'target/surefire-reports/*.xml'
-}
-}
-            
-}
 stage('metric-check') {
             steps {
 echo 'unit test..'
